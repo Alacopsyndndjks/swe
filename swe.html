@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Screen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: #fff;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .login-btn {
+            display: block;
+            width: 100%;
+            margin: 12px 0;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .google {
+            background: #4285F4;
+            color: #fff;
+        }
+        .outlook {
+            background: #0078D4;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <button class="login-btn google" onclick="loginWithGoogle()">Login with Google</button>
+        <button class="login-btn outlook" onclick="loginWithOutlook()">Login with Outlook</button>
+    </div>
+    <script>
+        function loginWithGoogle() {
+            const clientId = 'YOUR_GOOGLE_CLIENT_ID';
+            const redirectUri = 'YOUR_REDIRECT_URI';
+            const scope = 'email profile';
+            const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}`;
+            window.location.href = url;
+        }
+
+        function loginWithOutlook() {
+            const clientId = 'YOUR_MICROSOFT_CLIENT_ID';
+            const redirectUri = 'YOUR_REDIRECT_URI';
+            const scope = 'openid profile email';
+            const url = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scope}`;
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
+
